@@ -61,7 +61,7 @@ exports.getAllTasks = (req, res) => {
 
       if (tasks) {
         return res.json({
-          message: "Successfull found tasks",
+          message: "Successfully found tasks",
           tasks,
         });
       } else {
