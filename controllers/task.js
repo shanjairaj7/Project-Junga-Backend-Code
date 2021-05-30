@@ -38,25 +38,39 @@ exports.getTask = (req, res) => {
 exports.getAllTasks = (req, res) => {
   const user = req.user;
 
-  Task.find({ createdBy: user.id }, (err, tasks) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Not able to find all tasks",
-      });
-    }
+  Task.find({ createdBy: user.id })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "createdBy",
+        model: "User",
+        select: "-password",
+      },
+    })
+    .populate({
+      path: "createdBy",
+      model: "User",
+      select: "-password",
+    })
+    .exec((err, tasks) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Not able to find tasks",
+        });
+      }
 
-    if (tasks) {
-      return res.json({
-        message: "Successfully found tasks",
-        tasks,
-      });
-    } else {
-      return res.json({
-        message: "No tasks available",
-        tasks,
-      });
-    }
-  });
+      if (tasks) {
+        return res.json({
+          message: "Successfull found tasks",
+          tasks,
+        });
+      } else {
+        return res.json({
+          message: "Tasks are empty",
+          tasks,
+        });
+      }
+    });
 };
 
 exports.updateTask = (req, res) => {
