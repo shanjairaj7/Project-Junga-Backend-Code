@@ -9,7 +9,7 @@ const taskRoutes = require("./routes/task");
 
 // Initialising variables
 const app = express();
-const dbUrl = process.env.REACT_APP_DB;
+const dbUrl = process.env.DB;
 
 // Mongoose connection
 mongoose
@@ -36,7 +36,7 @@ app.use("/api", userRoutes);
 app.use("/api", taskRoutes);
 
 // Port
-const port = process.env.REACT_APP_PORT || process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server successfully running on port ${port}`);

@@ -9,7 +9,7 @@ exports.isAuthorised = (req, res, next) => {
     });
   }
 
-  jwt.verify(token, process.env.REACT_APP_PRIVATE_KEY, (err, decodedUser) => {
+  jwt.verify(token, process.env.PRIVATE_KEY, (err, decodedUser) => {
     if (decodedUser && !err) {
       req.user = decodedUser;
       next();

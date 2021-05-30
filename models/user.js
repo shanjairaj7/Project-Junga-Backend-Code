@@ -35,10 +35,10 @@ userSchema.methods.generateAuthToken = function () {
       name: this.name,
       id: this._id,
     },
-    process.env.REACT_APP_PRIVATE_KEY
+    process.env.PRIVATE_KEY
   );
 
-  console.log(process.env.REACT_APP_PRIVATE_KEY);
+  console.log(process.env.PRIVATE_KEY);
 
   return token;
 };
