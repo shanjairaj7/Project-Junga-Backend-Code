@@ -38,7 +38,7 @@ exports.getTask = (req, res) => {
 exports.getAllTasks = (req, res) => {
   const user = req.user;
 
-  Task.find({ createdBy: user._id }, (err, tasks) => {
+  Task.find({ createdBy: user.id }, (err, tasks) => {
     if (err) {
       return res.status(400).json({
         error: "Not able to find all tasks",

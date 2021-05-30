@@ -9,6 +9,7 @@ const {
   deleteUser,
   addComment,
   changeTaskStatus,
+  getAllTasks,
 } = require("../controllers/task");
 const { isAuthorised } = require("../middlewares/user");
 const { getTaskById } = require("../middlewares/task");
@@ -26,6 +27,7 @@ router.post(
 
 // GET
 router.get("/task/:taskId", isAuthorised, getTask);
+router.get("/tasks", isAuthorised, getAllTasks);
 
 // PUT
 router.put("/task/:taskId", isAuthorised, updateTask);
