@@ -11,8 +11,6 @@ const taskRoutes = require("./routes/task");
 const app = express();
 const dbUrl = process.env.DB;
 
-console.log(dbUrl);
-
 // Mongoose connection
 mongoose
   .connect(dbUrl, {
