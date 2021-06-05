@@ -6,7 +6,7 @@ const {
   createTask,
   getTask,
   updateTask,
-  deleteUser,
+  deleteTask,
   addComment,
   changeTaskStatus,
   getAllTasks,
@@ -40,6 +40,6 @@ router.put(
 router.put("/task/:taskId/change-status", isAuthorised, changeTaskStatus);
 
 // DELETE
-router.delete("/task/:taskId", isAuthorised, deleteUser);
+router.delete("/task/:taskId", isAuthorised, deleteTask);
 
 module.exports = router;

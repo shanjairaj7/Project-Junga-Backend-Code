@@ -94,7 +94,7 @@ exports.updateTask = (req, res) => {
     });
 };
 
-exports.deleteUser = (req, res) => {
+exports.deleteTask = (req, res) => {
   const task = req.task;
 
   Task.findOneAndDelete({ _id: task._id })
