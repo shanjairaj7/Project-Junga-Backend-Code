@@ -43,6 +43,8 @@ exports.signUp = (req, res) => {
 
         const token = user.generateAuthToken();
 
+        user.password = undefined;
+
         return res.status(200).json({
           token,
           message: "Successfully saved user",
@@ -81,6 +83,8 @@ exports.signIn = (req, res) => {
       }
 
       const token = user.generateAuthToken();
+
+      user.password = undefined;
 
       return res.status(200).json({
         token,
