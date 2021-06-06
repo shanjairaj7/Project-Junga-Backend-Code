@@ -4,6 +4,14 @@ exports.getTaskById = (req, res, next) => {
   const taskId = req.params.taskId;
 
   Task.findOne({ _id: taskId })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "createdBy",
+        model: "User",
+        select: "-password",
+      },
+    })
     .populate("createdBy")
     .exec((err, task) => {
       if (err) {
